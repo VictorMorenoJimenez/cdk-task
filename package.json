@@ -2,7 +2,7 @@
   "name": "cdk-security-group",
   "version": "0.1.0",
   "bin": {
-    "cdk-sample": "bin/cdk-security-group.js"
+    "cdk-security-group": "bin/cdk-security-group.js"
   },
   "scripts": {
     "build": "tsc",
