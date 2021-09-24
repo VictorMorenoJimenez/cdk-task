@@ -8,6 +8,6 @@ const ipToAllow = app.node.tryGetContext('ipToAllow')
 const securityGroupId = app.node.tryGetContext('securityGroupId')
 new CdkSecurityGroupStack(app, 'CdkSecurityGroupStack', {
   ipToAllow: ipToAllow,
-  securityGroupId: securityGroupId
+  securityGroupId: securityGroupId,
   env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });

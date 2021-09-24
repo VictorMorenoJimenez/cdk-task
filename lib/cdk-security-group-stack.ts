@@ -9,7 +9,6 @@ export interface CdkSecurityGroupStackProps extends cdk.StackProps {
 export class CdkSecurityGroupStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props: CdkSecurityGroupStackProps) {
     super(scope, id, props);
-
     const ipToAllowWithMask = `${props.ipToAllow}/32`
     const securityGroup = this.getSecurityGroup(props.securityGroupId)
     securityGroup.addIngressRule(ec2.Peer.ipv4(ipToAllowWithMask), ec2.Port.tcp(22), 'Allow SSH Access')
