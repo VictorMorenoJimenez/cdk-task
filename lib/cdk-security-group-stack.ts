@@ -11,9 +11,12 @@ export class CdkSecurityGroupStack extends cdk.Stack {
     super(scope, id, props);
 
     const ipToAllowWithMask = `${props.ipToAllow}/32`
-    const securityGroup = ec2.SecurityGroup.fromLookup(this, 'SGLookUp', props.securityGroupId)
+    const securityGroup = this.getSecurityGroup(props.securityGroupId)
     securityGroup.addIngressRule(ec2.Peer.ipv4(ipToAllowWithMask), ec2.Port.tcp(22), 'Allow SSH Access')
     securityGroup.addIngressRule(ec2.Peer.ipv4(ipToAllowWithMask), ec2.Port.tcp(80), 'Allow HTTP Access')
+  }
 
+  private getSecurityGroup(sgId: string): ec2.SecurityGroup {
+    return ec2.SecurityGroup.fromLookup(this, 'SGLookUp', sgId) as ec2.SecurityGroup
   }
 }
